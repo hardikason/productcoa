@@ -41,9 +41,35 @@ Config added for below :
     a. Enabling/Disabling Module - This will allow admin to disable module if not required
     b. Product's COA images upload folder (Folder will available in pub/media) - Admin can choose/change folder to save files, if in case folder gets heavily loaded.
 
+# Code Quality Checks
+
+    ```bash
+    vendor/bin/phpcs --standard=vendor/magento/magento-coding-standard/Magento2 app/code/SK/ProductCOA/ --extensions=php --warning-severity=max
+    vendor/bin/phpmd app/code/SK/ProductCOA/ ansi dev/tests/static/testsuite/Magento/Test/Php/_files/phpmd/ruleset.xml 
+    vendor/bin/phpstan analyse app/code/SK/ProductCOA --level=max --memory-limit=1G
+
+# Screenshots
+
+Admin Configuration
+
 ![Admin Configuration](<ProductCOA Admin Configuration.png>)
+
+Attribute Display At Admin
+
 ![Product Attribute Display At Admin](<ProductCOA Product Attribute Display At Admin.png>)
+
+My Orders Page
+
 ![My Orders Page](<ProductCOA My Orders Page.png>) 
+
+Order Details Page
+
 ![Order Details Page](<ProductCOA Order Details Page.png>) 
+
+Authentication Display Page
+
 ![Authentication Display Page](<ProductCOA Authentication Display Page.png>) 
+
+Authentication Image Display
+
 ![Authentication Image Display](<ProductCOA Authentication Image Display.png>)
