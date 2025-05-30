@@ -7,6 +7,7 @@ This module allows Magento 2 store administrators to upload, manage, and associa
 1. Place the ProductCOA folder in app/code/
 2. Run the following commands:
 
+   ```bash
     php bin/magento setup:upgrade
     php bin/magento setup:di:compile
     php bin/magento setup:s:d -f
@@ -14,6 +15,7 @@ This module allows Magento 2 store administrators to upload, manage, and associa
 
 3. Confirm the module is enabled:
 
+    ```bash
     php bin/magento module:status SK_ProductCOA
 
 # Features
