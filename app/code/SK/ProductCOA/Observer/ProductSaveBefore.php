@@ -54,6 +54,8 @@ class ProductSaveBefore implements ObserverInterface
                     'authentication_photo',
                     $this->getAuthDirName(). '/' .$authenticationPhoto[0]['name']
                 );
+            } else {
+                $product->setData('authentication_photo', null);
             }
         } catch (\Exception $e) {
             $this->logger->error('Product save error: ' . $e->getMessage());

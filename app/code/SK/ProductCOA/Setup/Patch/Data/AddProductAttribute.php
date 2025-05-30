@@ -40,7 +40,7 @@ class AddProductAttribute implements DataPatchInterface
             Product::ENTITY,
             'authentication_photo',
             [
-                'type' => 'varchar',
+                'type' => 'text',
                 'label' => 'Authentication Photo',
                 'input' => 'media_image',
                 'frontend' => \Magento\Catalog\Model\Product\Attribute\Frontend\Image::class,
