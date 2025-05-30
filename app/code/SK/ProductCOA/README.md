@@ -42,3 +42,7 @@ Config added for below :
     b. Product's COA images upload folder (Folder will available in pub/media) - Admin can choose/change folder to save files, if in case folder gets heavily loaded.
 
 ![Admin Configuration](<ProductCOA Admin Configuration.png>)
+![Authentication Display Page](<ProductCOA Authentication Display Page.png>) 
+![My Orders Page](<ProductCOA My Orders Page.png>) 
+![Order Details Page](<ProductCOA Order Details Page.png>) 
+![Product Attribute Display At Admin](<ProductCOA Product Attribute Display At Admin.png>)
