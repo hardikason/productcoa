@@ -1,10 +1,18 @@
-# SK_ProductCOA module
+# Product's Certification of Authentication Module
 
 This module allows Magento 2 store administrators to upload, manage, and associate Certificate of Authenticity (COA) documents with individual products. The COA is then available to customers orders at the frontend.
 
+# Features
+
+    - Adds new product attribute or field for uploading COA
+    - Allows uploading image as proof of authenticity from product add/edit
+    - Backend UI integration for COA image upload and display 
+    - ViewModel used for frontend data binding
+    - Uses Magento UI components and admin system configuration
+
 # Installation Steps
 
-1. Place the ProductCOA folder in app/code/
+1. Download and place the zip folder in app/code/
 2. Run the following commands:
 
    ```bash
@@ -17,18 +25,6 @@ This module allows Magento 2 store administrators to upload, manage, and associa
 
     ```bash
     php bin/magento module:status SK_ProductCOA
-
-# Features
-
-Adds new product attribute or field for uploading COA
-
-Allows uploading image as proof of authenticity
-
-Backend UI integration for COA image upload and display 
-
-ViewModel used for frontend data binding
-
-Uses Magento UI components and admin system configuration
 
 # Admin Configuration
 
