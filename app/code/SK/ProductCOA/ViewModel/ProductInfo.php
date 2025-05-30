@@ -68,7 +68,7 @@ class ProductInfo implements ArgumentInterface
      */
     public function getViewProductAuthenticationPhotoUrl($orderItemId): string
     {
-        return $this->urlBuilder->getUrl("productcoa/customer/authphoto/", ['id'=>(int)$orderItemId]);
+        return $this->urlBuilder->getUrl("productcoa/customer/auth-photo/", ['id'=>(int)$orderItemId]);
     }
 
     /**
