@@ -9,6 +9,9 @@ This module allows Magento 2 store administrators to upload, manage, and associa
     - Backend UI integration for COA image upload and display 
     - ViewModel used for frontend data binding
     - Uses Magento UI components and admin system configuration
+    - Customer will be able to see authentication photo on ordered product.
+    - Admin can enable/disable module anytime.
+    - Photo upload directory can be changed from admin only.
 
 # Installation Steps
 
