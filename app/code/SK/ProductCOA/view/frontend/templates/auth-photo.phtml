@@ -1,0 +1,118 @@
+<?php 
+/** @var ProductInfo $productInfoViewModel */
+$productInfoViewModel = $block->getData('productInfoViewModel');
+$order = $productInfoViewModel->getOrder();
+$priceHelper = $this->helper('Magento\Framework\Pricing\Helper\Data');
+?>
+<div class="auth-photo-container">
+    <?php
+
+    $orderItems = $order->getAllItems();
+
+    foreach ($orderItems as $index => $item):
+        if ($item->getParentItem()) :
+            continue;
+        endif;
+        $product =  $item->getProduct();
+        $imageUrl = $productInfoViewModel->getProductImage($product); // Helper or method returning image URL
+        $authPhoto = $item->getAuthenticationPhoto(); // e.g., from sales_order_item DB
+        $authPhotoUrl = $productInfoViewModel->getAuthenticationPhotoUrl($authPhoto);
+
+    ?>
+        <div class="product-info-container">
+            <div class="product-info">
+                <div class="product-image">
+                    <img src="<?= $imageUrl ?>" alt="<?= $block->escapeHtml($item->getName()) ?>">
+                </div>
+                <div class="product-details">
+                    <h2><?= $block->escapeHtml($item->getName()) ?></h2>
+                    <p><strong><?= $block->escapeHtml('Sku:') ?></strong> &nbsp;<?= /* @noEscape */ $block->prepareSku($item->getSku()) ?></p>
+
+                    <?php 
+                    $productOptions = $item->getProductOptions();
+
+                    if (!empty($productOptions)) {
+                        if (isset($productOptions['options'])) {
+                            foreach ($productOptions['options'] as $option) {
+                                echo '<p><strong>' . $block->escapeHtml($option['label']) . ':</strong> ' . $block->escapeHtml($option['value']) . '</p>';
+                            }
+                        }
+
+                        if (isset($productOptions['additional_options'])) {
+                            foreach ($productOptions['additional_options'] as $option) {
+                                echo '<p><strong>' . $block->escapeHtml($option['label']) . ':</strong> ' . $block->escapeHtml($option['value']) . '</p>';
+                            }
+                        }
+
+                        if (isset($productOptions['attributes_info'])) {
+                            foreach ($productOptions['attributes_info'] as $option) {
+                                echo '<p><strong>' . $block->escapeHtml($option['label']) . ':</strong> ' . $block->escapeHtml($option['value']) . '</p>';
+                            }
+                        }
+                    } ?>
+
+                    <p class="p-price"><strong><?= $block->escapeHtml(__('Price:'));?></strong>
+                        <?= $priceHelper->currency($item->getPrice(), true, false); ?>
+                    </p>
+
+                    <p>
+                        <strong><?= $block->escapeHtml(__('Qty:'));?></strong>
+                        <ul class="items-qty">
+                        <?php if ($item->getQtyOrdered() > 0): ?>
+                            <li class="item">
+                                <span class="title"><?= $block->escapeHtml(__('Ordered')) ?></span>
+                                <span class="content">
+                                    <?= $block->escapeHtml($localeFormatter->formatNumber((float) $item->getQtyOrdered()))?>
+                                </span>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($item->getQtyShipped() > 0): ?>
+                            <li class="item">
+                                <span class="title"><?= $block->escapeHtml(__('Shipped')) ?></span>
+                                <span class="content">
+                                    <?= $block->escapeHtml($localeFormatter->formatNumber((float) $item->getQtyShipped()))?>
+                                </span>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($item->getQtyCanceled() > 0): ?>
+                            <li class="item">
+                                <span class="title"><?= $block->escapeHtml(__('Canceled')) ?></span>
+                                <span class="content">
+                                    <?= $block->escapeHtml(
+                                        $localeFormatter->formatNumber((float) $item->getQtyCanceled())
+                                    )?>
+                                </span>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($item->getQtyRefunded() > 0): ?>
+                            <li class="item">
+                                <span class="title"><?= $block->escapeHtml(__('Refunded')) ?></span>
+                                <span class="content">
+                                    <?= $block->escapeHtml(
+                                        $localeFormatter->formatNumber((float) $item->getQtyRefunded())
+                                    )?>
+                                </span>
+                            </li>
+                        <?php endif; ?>
+                        </ul>
+                    </p>
+
+                    <?php if($item->getAuthenticationPhoto() !== null): ?>
+                        <a href="#" class="modal-trigger" data-modal="auth-modal-<?= $index ?>">
+                            <?= $block->escapeHtml('View Authentication Photo') ?>
+                        </a>
+                        <!-- Modal HTML -->
+                        <div id="auth-modal-<?= $index ?>" class="auth-modal" style="display: none;">
+                            <div class="modal-inner-content">
+                                <span class="modal-close" data-modal="auth-modal-<?= $index ?>">&times;</span>
+                                <h2><?= $block->escapeHtml('Certificate of Authentication') ?></h2>
+                                <img src="<?= $block->escapeUrl($authPhotoUrl) ?>" alt="Authentication Photo" style="max-width: 100%;">
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+
+    <?php endforeach; ?>
+</div>
