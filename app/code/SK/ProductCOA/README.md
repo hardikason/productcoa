@@ -52,24 +52,24 @@ Config added for below :
 
 Admin Configuration
 
-![Admin Configuration](<ProductCOA Admin Configuration.png>)
+![Admin Configuration](<.Screenshots/ProductCOA Admin Configuration.png>)
 
 Attribute Display At Admin
 
-![Product Attribute Display At Admin](<ProductCOA Product Attribute Display At Admin.png>)
+![Product Attribute Display At Admin](<.Screenshots/ProductCOA Product Attribute Display At Admin.png>)
 
 My Orders Page
 
-![My Orders Page](<ProductCOA My Orders Page.png>) 
+![My Orders Page](<.Screenshots/ProductCOA My Orders Page.png>) 
 
 Order Details Page
 
-![Order Details Page](<ProductCOA Order Details Page.png>) 
+![Order Details Page](<.Screenshots/ProductCOA Order Details Page.png>) 
 
 Authentication Display Page
 
-![Authentication Display Page](<ProductCOA Authentication Display Page.png>) 
+![Authentication Display Page](<.Screenshots/ProductCOA Authentication Display Page.png>) 
 
 Authentication Image Display
 
-![Authentication Image Display](<ProductCOA Authentication Image Display.png>)
+![Authentication Image Display](<.Screenshots/ProductCOA Authentication Image Display.png>)
