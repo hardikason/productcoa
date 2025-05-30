@@ -1,6 +1,6 @@
 # SK_ProductCOA module
 
-This module allows Magento 2 store administrators to upload, manage, and associate Certificate of Authenticity (COA) documents with individual products. The COA is then available to customers on the frontend.
+This module allows Magento 2 store administrators to upload, manage, and associate Certificate of Authenticity (COA) documents with individual products. The COA is then available to customers orders at the frontend.
 
 # Installation Steps
 
