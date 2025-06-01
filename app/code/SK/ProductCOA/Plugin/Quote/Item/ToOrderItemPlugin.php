@@ -34,7 +34,7 @@ class ToOrderItemPlugin
      * @param ToOrderItem $subject
      * @param OrderItem $result
      * @param QuoteItem $item
-     * @param array<string, mixed> $additional
+     * @param array<array<string,mixed>> $additional
      * @return OrderItem
      */
     public function afterConvert(

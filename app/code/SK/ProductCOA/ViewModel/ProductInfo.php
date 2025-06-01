@@ -12,12 +12,12 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\UrlInterface;
-use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Framework\App\RequestInterface;
 use Magento\Catalog\Helper\Image;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Model\Order;
+use Magento\Framework\Pricing\Helper\Data as PriceHelper;
 
 /**
  * ViewModel for Getting Product Info
@@ -35,18 +35,18 @@ class ProductInfo implements ArgumentInterface
      *
      * @param ScopeConfigInterface $scopeConfig
      * @param UrlInterface $urlBuilder
-     * @param ProductRepositoryInterface $productRepository
      * @param RequestInterface $request
      * @param Image $imageHelper
      * @param OrderRepositoryInterface $orderRepository
+     * @param PriceHelper $priceHelper
      */
     public function __construct(
         protected ScopeConfigInterface $scopeConfig,
         protected UrlInterface $urlBuilder,
-        protected ProductRepositoryInterface $productRepository,
         protected RequestInterface $request,
         protected Image $imageHelper,
         protected OrderRepositoryInterface $orderRepository,
+        protected PriceHelper $priceHelper,
     ) {
     }
 
@@ -128,5 +128,16 @@ class ProductInfo implements ArgumentInterface
         }
 
         return $hasAuthenticationPhoto;
+    }
+
+    /**
+     * Get Formatted Price function
+     *
+     * @param float $price
+     * @return float|string
+     */
+    public function getFormattedPrice($price): float|string
+    {
+        return $this->priceHelper->currency($price, true, false);
     }
 }

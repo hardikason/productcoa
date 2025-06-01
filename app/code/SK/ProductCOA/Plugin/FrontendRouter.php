@@ -15,7 +15,7 @@ class FrontendRouter
 {
     /**
      * Rewrite dashed URLs to controller-friendly format
-     * 
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      *
      * @param Base $subject

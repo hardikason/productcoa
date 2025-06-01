@@ -13,5 +13,21 @@
         </arguments>
     </virtualType>
     <!-- End Authentication data pass to product form -->
+
+    <type name="Magento\Catalog\Ui\DataProvider\Product\ProductDataProvider">
+        <plugin name="add_authentication_photo_to_collection"
+                type="SK\ProductCOA\Plugin\AddAttributeToCollection" />
+    </type>
+
+    <type name="Magento\Catalog\Ui\DataProvider\Product\ProductDataProvider">
+        <arguments>
+            <argument name="addFieldStrategies" xsi:type="array">
+                <item name="authentication_photo" xsi:type="object">SK\ProductCOA\Ui\AddField\AuthenticationPhoto</item>
+            </argument>
+            <argument name="addFilterStrategies" xsi:type="array">
+                <item name="authentication_photo" xsi:type="object">SK\ProductCOA\Ui\AddFilter\AuthenticationPhoto</item>
+            </argument>
+        </arguments>
+    </type>
     
 </config>

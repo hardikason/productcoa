@@ -51,7 +51,7 @@ class AuthPhoto implements HttpGetActionInterface
             return $resultRedirect;
         }
 
-        if(!$this->productInfo->isEnabled()) {
+        if (!$this->productInfo->isEnabled()) {
             $resultRedirect->setPath('sales/order/history');
             return $resultRedirect;
         }

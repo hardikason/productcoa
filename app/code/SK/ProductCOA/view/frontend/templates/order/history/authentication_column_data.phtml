@@ -8,10 +8,11 @@ $orderId = $block->getOrder()->getId();
 $hasAuthenticationPhoto = $productInfoViewModel->hasAuthenticationPhoto($block->getOrder());
 
 ?>
-<td data-th="<?= $block->escapeHtml(__('View Authentication Photo')) ?>" class="col">
-    <?php if($hasAuthenticationPhoto): ?>
-        <a href="<?= $productInfoViewModel->getViewProductAuthenticationPhotoUrl($orderId) ?>" class="action view">
-            <span><?= $block->escapeHtml(__('View Authentication Photo')) ?></span>
+<td data-th="<?= $escaper->escapeHtml(__('View Authentication Photo')) ?>" class="col">
+    <?php if ($hasAuthenticationPhoto): ?>
+        <a href="<?=  $escaper->escapeHtml($productInfoViewModel->getViewProductAuthenticationPhotoUrl($orderId)) ?>"
+             class="action view">
+            <span><?= $escaper->escapeHtml(__('View Authentication Photo')) ?></span>
         </a>
     <?php endif; ?>
 </td>

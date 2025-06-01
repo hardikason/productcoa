@@ -71,7 +71,7 @@ class AuthenticationPhotoDataProvider extends AbstractModifier
     /**
      * Modify Meta function
      *
-     * @param array<int|string, mixed> $meta
+     * @param array<array<string,mixed>> $meta
      * @return array<int|string, mixed>
      */
     public function modifyMeta(array $meta):array

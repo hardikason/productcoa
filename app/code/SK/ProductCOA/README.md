@@ -6,12 +6,14 @@ This module allows Magento 2 store administrators to upload, manage, and associa
 
     - Adds new product attribute or field for uploading COA
     - Allows uploading image as proof of authenticity from product add/edit
-    - Backend UI integration for COA image upload and display 
+    - Backend UI integration for COA image upload, preview and display 
     - ViewModel used for frontend data binding
     - Uses Magento UI components and admin system configuration
-    - Customer will be able to see authentication photo on ordered product.
+    - Customer will be able to see authentication photo on ordered product from My order list and order details page.
+    - Admin will able to see whether product has authentication photo uploaded or not.
     - Admin can enable/disable module anytime.
     - Photo upload directory can be changed from admin only.
+    - Custom routing added to display all ordered items from order on seperate page as {url}/{module-frontname}/customer/auth-photo/id/:id 
 
 # Installation Steps
 
@@ -57,6 +59,14 @@ Attribute Display At Admin
 
 ![Product Attribute Display At Admin](<.Screenshots/ProductCOA Product Attribute Display At Admin.png>)
 
+Authentication Photo In Product Grid At Admin
+
+![ProductCOA Product Grid](<.Screenshots/ProductCOA Product Grid.png>)
+
+Authentication Photo Filter In Product Grid At Admin
+
+![ProductCOA Product Grid Filter](<.Screenshots/ProductCOA Product Grid Filter.png>)
+
 My Orders Page
 
 ![My Orders Page](<.Screenshots/ProductCOA My Orders Page.png>) 
@@ -65,10 +75,10 @@ Order Details Page
 
 ![Order Details Page](<.Screenshots/ProductCOA Order Details Page.png>) 
 
-Authentication Display Page
+Authentication Photo Display Page
 
 ![Authentication Display Page](<.Screenshots/ProductCOA Authentication Display Page.png>) 
 
-Authentication Image Display
+Authentication Photo Display In Popup
 
 ![Authentication Image Display](<.Screenshots/ProductCOA Authentication Image Display.png>)
