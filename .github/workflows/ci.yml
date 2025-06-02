@@ -34,9 +34,11 @@ jobs:
           ini-values: post_max_size=512M, upload_max_filesize=512M, memory_limit=2G
           coverage: none
 
+      - name: Clear existing Composer auth
+        run: composer config --global --unset http-basic.repo.magento.com || true
+
       - name: Set up Magento Composer Auth
-        run: |
-          composer config --global http-basic.repo.magento.com '${{ secrets.MAGENTO_PUBLIC_KEY }}' '${{ secrets.MAGENTO_PRIVATE_KEY }}'
+        run: composer config --global http-basic.repo.magento.com '${{ secrets.MAGENTO_PUBLIC_KEY }}' '${{ secrets.MAGENTO_PRIVATE_KEY }}'
 
 
       - name: Install dependencies
