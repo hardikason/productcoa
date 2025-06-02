@@ -116,19 +116,11 @@ $order = $productInfoViewModel->getOrder();
                                     style="display: none;">
                             <div class="modal-inner-content">
                                 <span class="modal-close" 
-                                        data-modal="auth-modal-<?= $escaper->escapeHtml($index) ?>">&times;</span>
+                                        data-modal="auth-modal-<?= $index ?>">&times;</span>
                                 <h2><?= $escaper->escapeHtml('Certificate of Authentication') ?></h2>
                                 <img src="<?= $escaper->escapeUrl($authPhotoUrl) ?>" alt="Authentication Photo">
                             </div>
                         </div>
-
-
-                        
-
-
-
-
-                        
                         <?php endif; ?>
                 </div>
             </div>
