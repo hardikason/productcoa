@@ -62,7 +62,7 @@ jobs:
       - name: Set file permissions
         run: chmod -R 777 var/ pub/ generated/
 
-      - name: 🧱 Install Magento
+      - name: Install Magento
         run: bin/magento setup:install \
               --base-url=http://localhost \
               --db-host=127.0.0.1 \
