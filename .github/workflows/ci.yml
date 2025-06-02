@@ -21,6 +21,21 @@ jobs:
           - 3306:3306
         options: --health-cmd="mysqladmin ping --silent" --health-interval=10s --health-timeout=5s --health-retries=5
 
+      opensearch:
+        image: opensearchproject/opensearch:2.11.1
+        env:
+          discovery.type: single-node
+          OPENSEARCH_JAVA_OPTS: "-Xms512m -Xmx512m"
+          bootstrap.memory_lock: "true"
+          plugins.security.disabled: "true"
+        ports:
+          - 9200:9200
+        options: >-
+          --health-cmd "curl -s http://localhost:9200/_cluster/health | grep -q '\"status\":\"green\"'"
+          --health-interval 10s
+          --health-timeout 120s
+          --health-retries 10
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -47,23 +62,25 @@ jobs:
       - name: Set file permissions
         run: chmod -R 777 var/ pub/ generated/
 
-      - name: Install Magento
-        run: |
-          bin/magento setup:install \
-            --base-url=http://localhost/ \
-            --db-host=127.0.0.1 \
-            --db-name=magento \
-            --db-user=root \
-            --db-password=root \
-            --admin-firstname=Admin \
-            --admin-lastname=User \
-            --admin-email=admin@example.com \
-            --admin-user=admin \
-            --admin-password=Admin123! \
-            --language=en_US \
-            --currency=USD \
-            --timezone=UTC \
-            --use-rewrites=1
+      - name: 🧱 Install Magento
+        run: bin/magento setup:install \
+              --base-url=http://localhost \
+              --db-host=127.0.0.1 \
+              --db-name=magento \
+              --db-user=root \
+              --db-password=magento \
+              --admin-firstname=Admin \
+              --admin-lastname=User \
+              --admin-email=admin@example.com \
+              --admin-user=admin \
+              --admin-password=admin123 \
+              --language=en_US \
+              --currency=USD \
+              --timezone=UTC \
+              --use-rewrites=1 \
+              --search-engine=opensearch \
+              --opensearch-host=127.0.0.1 \
+              --opensearch-port=9200
 
       # Optional: PHPCS code style check
       - name: Run PHPCS
